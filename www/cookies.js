@@ -43,4 +43,8 @@ Cookies.prototype.clear = function(successCallback, errorCallback) {
     exec(successCallback, errorCallback, "Cookies", "clear", []);
 };
 
+Cookies.prototype.hasCookies = function(successCallback, errorCallback) {
+  exec(successCallback, errorCallback, "Cookies", "hasCookies", []);
+};
+
 module.exports = new Cookies();
