@@ -63,8 +63,14 @@ public class Cookies extends CordovaPlugin {
     }
    public boolean hasCookies() {
 		Log.v(TAG, "has cookies...");
-        boolean b = CookieManager.getInstance().hasCookies();
-        return b;
+        String cookie1 = CookieManager.getInstance().getCookie("91a70_winduser");
+		String cookie2 = CookieManager.getInstance().getCookie("91a70_ck_info");
+		if(TextUtils.isEmpty(cookie1) && TextUtils.isEmpty(cookie2)) {
+			return false;
+		} else {
+			return true;
+		}
+        
     }
 
 }
