@@ -44,12 +44,27 @@ public class Cookies extends CordovaPlugin {
             this.clear();
             callbackContext.success();
             return true;
+        } else if ("hasCookies".equals(action)) {
+            boolean b = this.hasCookies();
+            if (b) {
+              callbackContext.success();
+            } else {
+              callbackContext.error("no session");
+            }
+
+            return true;
         }
         return false;  // Returning false results in a "MethodNotFound" error.
     }
-	
+
 	public void clear() {
 		Log.v(TAG, "Clearing cookies...");
         CookieManager.getInstance().removeAllCookies(null);
     }
+   public boolean hasCookies() {
+		Log.v(TAG, "has cookies...");
+        boolean b = CookieManager.getInstance().hasCookies();
+        return b;
+    }
+
 }
