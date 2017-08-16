@@ -33,7 +33,7 @@ import org.json.JSONException;
 
 import android.util.Log;
 import android.webkit.CookieManager;
-
+import android.text.TextUtils;
 public class Cookies extends CordovaPlugin {
 	
 	private final String TAG = "CookiesPlugin";
