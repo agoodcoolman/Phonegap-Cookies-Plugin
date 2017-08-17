@@ -74,6 +74,6 @@ public class Cookies extends CordovaPlugin {
 
 		  return false;
     }
-    }
+    
 
 }
