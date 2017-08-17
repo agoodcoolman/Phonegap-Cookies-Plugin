@@ -57,20 +57,23 @@ public class Cookies extends CordovaPlugin {
         return false;  // Returning false results in a "MethodNotFound" error.
     }
 
-	public void clear() {
+	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+  public void clear() {
 		Log.v(TAG, "Clearing cookies...");
         CookieManager.getInstance().removeAllCookies(null);
     }
    public boolean hasCookies() {
 		Log.v(TAG, "has cookies...");
-        String cookie1 = CookieManager.getInstance().getCookie("91a70_winduser");
-		String cookie2 = CookieManager.getInstance().getCookie("91a70_ck_info");
-		if(TextUtils.isEmpty(cookie1) && TextUtils.isEmpty(cookie2)) {
-			return false;
-		} else {
-			return true;
-		}
-        
+     // 获取一个网站的cookie
+        String cookie1 = CookieManager.getInstance().getCookie("www.majiamen.com");
+     if(cookie1 != null && !TextUtils.isEmpty(cookie1)) {
+        if (cookie1.contains("91a70_winduser") && cookie1.contains("91a70_ck_info")) {
+          return true;
+        }
+     }
+
+		  return false;
+    }
     }
 
 }
